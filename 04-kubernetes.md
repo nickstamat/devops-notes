@@ -75,7 +75,7 @@ At the hardware level, a Kubernetes cluster consists of several nodes, which can
 - **Masters**, which host the Kubernetes control plane that controls and manages the whole system
 - **Workers**, which run the actual workloads you deploy
 
-![](../static/images/k8s-cluster-architecture.png)
+![](static/images/k8s-cluster-architecture.png)
 
 ## Master Node Components
 
@@ -118,7 +118,7 @@ The `kube-proxy` component is a network proxy that runs on each node. It is resp
 
 ## Highly-Available Master Configurations
 
-![](../static/images/k8s-cluster-architecture-ha.png)
+![](static/images/k8s-cluster-architecture-ha.png)
 
 # How to Manage a Kubernetes Cluster
 
@@ -199,7 +199,7 @@ Copy something from a running pod (relies on `tar`):
 
 The Kubernetes Dashboard runs in the cluster and is served from it (usually accessed with `kubectl port-forward`). It may come pre-installed in some clusters. If not, you can just deploy it by following the instructions in the official repo.
 
-![](../static/images/k8s-dashboard.png)
+![](static/images/k8s-dashboard.png)
 
 ### Octant
 
@@ -207,7 +207,7 @@ The Kubernetes Dashboard runs in the cluster and is served from it (usually acce
 
 Octant is developed by VMware and is distributed as a static binary. It runs locally, using your kubeconfig to connect to the cluster.
 
-![](../static/images/k8s-octant.jpg)
+![](static/images/k8s-octant.jpg)
 
 ## Using Terminal UIs
 
@@ -215,7 +215,7 @@ Octant is developed by VMware and is distributed as a static binary. It runs loc
 
 k9s is an open-source project and is distributed as a static binary. It runs locally, using your kubeconfig to connect to the cluster.
 
-![](../static/images/k8s-k9s.png)
+![](static/images/k8s-k9s.png)
 
 # Kubernetes Workloads
 
@@ -223,8 +223,8 @@ k9s is an open-source project and is distributed as a static binary. It runs loc
 
 A Pod represent a collection of application containers and volumes running in the same execution environment. Pods are the smallest deployable object in Kubernetes. All containers in a Pod always end up on the same machine.
 
-![](../static/images/k8s-pods.png)
-![](../static/images/k8s-worker.png)
+![](static/images/k8s-pods.png)
+![](static/images/k8s-worker.png)
 
 ### Pod Design Considerations
 
@@ -627,7 +627,7 @@ A Service enables network access to a set of Pods in Kubernetes.
 
 Services select Pods based on their labels. When a network request is made to the service, it selects all Pods in the cluster matching the Service's selector, chooses one of them, and forwards the network request to it.
 
-![](../static/images/k8s-services.gif)
+![](static/images/k8s-services.gif)
 
 #### Service Manifest
 
@@ -661,23 +661,23 @@ A Service can be one of those types:
 
 - `ClusterIP` (default): Exposes the service on a cluster-internal IP. You can reach the service only from within the cluster (from other services).
 
-![](../static/images/k8s-service-cluster-ip.png)
+![](static/images/k8s-service-cluster-ip.png)
 
 - `NodePort`: This type of service exposes the service on each node's IP at a static port. A ClusterIP service is created automatically, and the NodePort service will route to it. From outside the cluster, you can reach the NodePort service by using `<NodeIP>:<NodePort>`. This is rarely used in production, since you're not supposed to reach a Node directly. It's usually just a way to test things out.
 
-![](../static/images/k8s-service-node-port.png)
+![](static/images/k8s-service-node-port.png)
 
 - `LoadBalancer`: This service type exposes the service externally by provisioning a load balancer of your cloud provider. The external load balancer routes to your NodePort and ClusterIP services, which are created automatically.
 
-![](../static/images/k8s-service-load-balancer.png)
+![](static/images/k8s-service-load-balancer.png)
 
 - `ExternalName`: This type maps the service to the contents of the externalName field (e.g., foo.bar.example.com). It does this by returning a value for the CNAME record.
 
-![](../static/images/k8s-service-external-name.png)
+![](static/images/k8s-service-external-name.png)
 
 An overview of all types:
 
-![](../static/images/k8s-services-all.png)
+![](static/images/k8s-services-all.png)
 
 ### Serving Multiple Services: The Ingress Controller
 
@@ -685,7 +685,7 @@ If your application needs only one entrypoint for your clients to start using it
 
 The Ingress controller is exposed via a LoadBalancer service. Afterwards, it proxies HTTP traffic to different services according to a set of rules, which can be host-based and/or path-based.
 
-![](../static/images/k8s-ingress.png)
+![](static/images/k8s-ingress.png)
 
 #### Ingress Manifest
 
